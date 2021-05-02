@@ -5,9 +5,10 @@ import RestaurantList from '@/components/RestaurantList';
 describe('RestaurantList', () => {
   const localVue = createLocalVue();
   localVue.use(Vuex);
+
   it('loads restaurants on mount', () => {
     const restaurantsModule = {
-      namescaped: true,
+      namespaced: true,
       actions: {
         load: jest.fn().mockName('load'),
       },
@@ -18,6 +19,7 @@ describe('RestaurantList', () => {
       },
     });
     mount(RestaurantList, {localVue, store});
+
     expect(restaurantsModule.actions.load).toHaveBeenCalled();
   });
 });
