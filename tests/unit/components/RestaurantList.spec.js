@@ -15,7 +15,7 @@ describe('RestaurantList', () => {
   let wrapper;
 
   const findByTestId = (wrapper, testId, index) =>
-  wrapper.findAll(`[data-testid="${testId}"]`).at(index);
+    wrapper.findAll(`[data-testid="${testId}"]`).at(index);
 
   beforeEach(() => {
     restaurantsModule = {
