@@ -1,8 +1,11 @@
+import Vue from 'vue';
+import Vuetify from 'vuetify';
 import Vuex from 'vuex';
 import {mount, createLocalVue} from '@vue/test-utils';
 import RestaurantList from '@/components/RestaurantList';
 
 describe('RestaurantList', () => {
+  Vue.use(Vuetify);
   const localVue = createLocalVue();
   localVue.use(Vuex);
 
