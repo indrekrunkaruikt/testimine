@@ -1,18 +1,25 @@
 <template>
   <div>
     RestaurantList
-  <div>
-    <v-list-item
+    <div>
+      <v-progress-circular
+        indeterminate
+        color="primary"
+        data-testid="loading-indicator"
+        v-if="loading"
+      />
+      <v-list-item
         v-for="restaurant in restaurants"
         :key="restaurant.id"
         data-testid="restaurant"
       >
-      <v-list-item-content>
-        <v-list-item-title>
-          {{ restaurant.name }}
-        </v-list-item-title>
-      </v-list-item-content>
-    </v-list-item>
+        <v-list-item-content>
+          <v-list-item-title>
+            {{ restaurant.name }}
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+    </div>
   </div>
 </template>
 
@@ -28,6 +35,7 @@ export default {
     loadRestaurants: 'restaurants/load',
   }),
   computed: mapState({
+    loading: state => state.restaurants.loading,
     restaurants: state => state.restaurants.records,
   }),
 };
