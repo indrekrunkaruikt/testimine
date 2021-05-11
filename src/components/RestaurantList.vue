@@ -3,11 +3,14 @@
     RestaurantList
     <div>
       <v-progress-circular
+        v-if="loading"
         indeterminate
         color="primary"
         data-testid="loading-indicator"
-        v-if="loading"
       />
+      <v-alert v-if="loadError" type="error" data-testid="loading-error">
+        Restaurants could not be loaded.
+      </v-alert>
       <v-list-item
         v-for="restaurant in restaurants"
         :key="restaurant.id"
@@ -36,7 +39,7 @@ export default {
   }),
   computed: mapState({
     loading: state => state.restaurants.loading,
-    restaurants: state => state.restaurants.records,
+    loadError: state => state.restaurants.loadError,
   }),
 };
 </script>
